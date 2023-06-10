@@ -1,0 +1,19 @@
+# {{ ansible_managed }}
+
+server {
+    listen 80;
+    server_name _;
+    access_log /var/log/nginx/main.log ltsv;
+    error_log /var/log/nginx/err-main.log;
+
+    root /var/www/html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location /fr {
+        proxy_pass http://localhost:8000;
+    }
+
+}

@@ -1,0 +1,8 @@
+- hosts: all
+  vars:
+    ngrok_auth_token: "1hBOasiCpGxlB3PpElA2IYoloem_2QsDeK14JB9mxTrTsU8fp"
+  roles:
+    - bootstrap
+    - fruityfi
+    - nginx
+    - ngrok

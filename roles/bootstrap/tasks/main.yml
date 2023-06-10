@@ -1,0 +1,18 @@
+
+- name: Set a hostname
+  ansible.builtin.hostname:
+    name: pidoor
+
+- name: ensure GUI is disabled
+  ansible.builtin.command:
+    cmd: systemctl set-default multi-user.target
+
+- name: Copy sshd_config
+  ansible.builtin.copy:
+    dest: "/etc/ssh/sshd_config"
+    src: "sshd_config"
+
+- name: Copy welcome banner
+  ansible.builtin.copy:
+    dest: "/etc/welcome-banner"
+    src: "welcome-banner"

@@ -1,0 +1,15 @@
+
+- name: Install packages
+  ansible.builtin.apt:
+    name: fruitywifi
+    state: present
+    update_cache: true
+
+- name: Make sure fruitywifi and php5-fpm is started and enabled
+  ansible.builtin.sysvinit:
+      name: {{ item }}
+      state: started
+      enabled: yes
+  with_items:
+    - fruitywifi
+    - php5-fpm
