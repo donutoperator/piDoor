@@ -23,7 +23,22 @@
     state: restarted
     enabled: true
 
-- name: update and upgrade APT
+- name: Install kali meta pakages
   ansible.builtin.apt:
+    name: "{{ item }}"
     update_cache: yes # not required. Run the equivalent of C(apt-get update) before the operation. Can be run as part of the package installation or as a separate step.
-    upgrade: full
+  with_items: 
+    - kali-tools-passwords
+    - kali-tools-information-gathering
+    - kali-tools-vulnerability
+    - kali-tools-web
+    - kali-tools-database
+    - kali-tools-passwords
+    - kali-tools-wireless
+    - kali-tools-reverse-engineering
+    - kali-tools-exploitation
+    - kali-tools-social-engineering
+    - kali-tools-sniffing-spoofing
+    - kali-tools-post-exploitation
+    - kali-tools-forensics
+    - kali-tools-reporting
