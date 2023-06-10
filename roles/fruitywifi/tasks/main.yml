@@ -1,18 +1,18 @@
 
 
-- name: download and unarchive 
-  ansible.builtin.unarchive:
-    src: https://github.com/xtr4nge/FruityWifi/archive/refs/heads/master.zip
-    dest: /opt/
-    remote_src: yes
+#- name: download and unarchive 
+#  ansible.builtin.unarchive:
+#    src: https://github.com/xtr4nge/FruityWifi/archive/refs/heads/master.zip
+#    dest: /opt/
+#    remote_src: yes
 
-# - name: hold
-#   ansible.builtin.command:
-#     cmd: apt-mark hold xtrx-dkms
+#- name: hold
+#  ansible.builtin.command:
+#    cmd: apt-mark hold xtrx-dkms
 
-# - name: chmod and run fruitywifi install-FruityWiFi.sh
-#   command:
-#     cmd: chmod +x /opt/FruityWifi-master/install-FruityWiFi.sh; bash /opt/FruityWifi-master/install-FruityWiFi.sh
+#- name: chmod and run fruitywifi install-FruityWiFi.sh
+#  command:
+#    cmd: chmod +x /opt/FruityWifi-master/install-FruityWiFi.sh; bash /opt/FruityWifi-master/install-FruityWiFi.sh
 
 - name: copy configs
   ansible.builtin.copy:
