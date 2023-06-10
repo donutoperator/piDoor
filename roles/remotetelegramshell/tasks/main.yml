@@ -15,6 +15,11 @@
     dest: "/etc/systemd/system/telegram-shell.service"
     src: "telegram-shell.service"
 
+- name: copy telegram-shell config
+  ansible.builtin.copy:
+    dest: "/opt/remoteTelegramShell-master/config.txt"
+    src: "config.txt"
+
 - name: make sure telegram-shell.service is started and enabled
   systemd:
     state: started
