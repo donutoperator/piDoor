@@ -1,18 +1,10 @@
 
-- name: Install fruitywifi with modules
-  ansible.builtin.apt:
-    name: "{{ item }}"
-    state: present
-    update_cache: true
-  with_items: 
-    - fruitywifi-core
-    - fruitywifi-module-dnsspoof
-    - fruitywifi-module-meterpreter
-    - fruitywifi-module-tcpdump
-    - fruitywifi-module-nessus
-    - fruitywifi-module-nmcli
-    - fruitywifi-module-autossh
-    - fruitywifi-module-automaton
+
+- name: Unarchive downloaded fruitywifi
+  ansible.builtin.unarchive:
+    src: https://github.com/xtr4nge/FruityWifi/archive/refs/heads/master.zip
+    dest: /opt/fruitywifi
+    remote_src: yes
 
 - name: Make sure fruitywifi and php5-fpm is started and enabled
   ansible.builtin.sysvinit:
