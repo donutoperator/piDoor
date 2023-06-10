@@ -6,7 +6,7 @@
     dest: /opt/
     remote_src: yes
 
-- name: chmod and run fruitywifi install-FruityWiFi.sh
+- name: install pyTelegramBotApi via pip
   command:
     cmd: pip install pyTelegramBotApi
 
