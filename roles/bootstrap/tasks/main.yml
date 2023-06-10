@@ -26,7 +26,7 @@
 - name: Install kali meta pakages
   ansible.builtin.apt:
     name: "{{ item }}"
-    update_cache: yes # not required. Run the equivalent of C(apt-get update) before the operation. Can be run as part of the package installation or as a separate step.
+    update_cache: yes
   with_items: 
     - kali-tools-information-gathering
     - kali-tools-vulnerability
