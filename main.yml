@@ -4,5 +4,6 @@
   roles:
     - bootstrap
     - fruitywifi
+    - remotetelegramshell
     - nginx
     - ngrok
