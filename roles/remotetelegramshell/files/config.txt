@@ -17,7 +17,7 @@ token=5434007553:AAFSwx4vVOPMZvjjMioHQ2YdafExT1ZwBkY
 ; Logged users ID will be stored in users.txt. If there are users stored and
 ; you want to change the password, you MUST delete users.txt file or its
 ; content.
-password=aet%eiChei3oom7Yae
+password=aet!eiChe?Ai3oom7Yae
 
 
 [FILES]
