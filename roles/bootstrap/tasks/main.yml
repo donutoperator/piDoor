@@ -16,3 +16,14 @@
   ansible.builtin.copy:
     dest: "/etc/welcome-banner"
     src: "welcome-banner"
+
+- name: Restart sshd
+  ansible.builtin.systemd:
+    name: sshd
+    state: restarted
+    enabled: true
+
+- name: update and upgrade APT
+  ansible.builtin.apt:
+    update_cache: yes # not required. Run the equivalent of C(apt-get update) before the operation. Can be run as part of the package installation or as a separate step.
+    upgrade: full
