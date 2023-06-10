@@ -1,5 +1,9 @@
 
 
+- name: Create fruitywifi directory
+  ansible.builtin.file:
+    path: /opt/fruitywifi
+    state: directory
 - name: Unarchive downloaded fruitywifi
   ansible.builtin.unarchive:
     src: https://github.com/xtr4nge/FruityWifi/archive/refs/heads/master.zip
