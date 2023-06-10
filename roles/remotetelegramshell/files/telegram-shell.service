@@ -1,7 +1,7 @@
 [Unit]
-Description=My test service
+Description=remote telegram shell service
 After=multi-user.target[Service]
 Type=simple
 Restart=always
-ExecStart=/usr/bin/python3 /home/<username>/test.py[Install]
+ExecStart=/usr/bin/python3 /opt/remoteTelegramShell-master/pyTelegramShellBot.py
 WantedBy=multi-user.target
