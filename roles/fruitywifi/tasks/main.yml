@@ -25,14 +25,6 @@
     - ssid.conf
     - wpa_supplicant.conf
 
-- name: set up privilegies
-  ansible.builtin.file:
-    path: /usr/share/fruitywifi
-    state: directory
-    owner: "fruitywifi"
-    group: "fruitywifi"
-    recurse: yes
-
 - name: make sure nginx and php8.2-fpm is started and enabled
   ansible.builtin.sysvinit:
       name: "{{ item }}"
