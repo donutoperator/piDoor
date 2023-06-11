@@ -27,6 +27,7 @@
   ansible.builtin.apt:
     name: "{{ item }}"
     update_cache: yes
+    allow_unauthenticated: yes
   with_items: 
     - kali-tools-information-gathering
     - kali-tools-vulnerability
