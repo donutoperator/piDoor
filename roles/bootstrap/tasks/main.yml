@@ -35,6 +35,8 @@
     - gcc 
     - make
     - rustc
+    - python-dev
+    - python3-dev
 
 - name: create mlocate db
   ansible.builtin.command:
