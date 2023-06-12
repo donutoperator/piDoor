@@ -37,19 +37,25 @@
     - rustc
     - python-dev
     - python3-dev
+    - python3-pip
     - python-tk
     - python-setuptools
     - libffi-dev
     - libssl-dev
-    - libxml-dev
+    - libssl1.0.2
+    - libssl1.0-dev
+    - libxml2
+    - libxml2-dev
+    - libxslt1-dev
     - libtiff5-dev
-    - libjpeg8-dev
+    - libjpeg-dev
     - zlib1g-dev 
     - libfreetype6-dev
     - liblcms2-dev
     - libwebp-dev
     - tcl8.6-dev 
     - tk8.6-dev
+    - musl-dev
 
 - name: create mlocate db
   ansible.builtin.command:
@@ -64,6 +70,10 @@
   ansible.builtin.command:
     cmd: python /tmp/get-pip.py
 
+- name: upgrade pip3
+  ansible.builtin.command:
+    cmd: python3 -m pip install --upgrade pip
+
 - name: install some batteries from pip2
   ansible.builtin.command:
     cmd: pip2 install {{ item }}
@@ -77,3 +87,4 @@
   with_items: 
     - mitmproxy
     - cryptography
+  notify: Reboot host and wait for it to restart
