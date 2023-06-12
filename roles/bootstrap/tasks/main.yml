@@ -37,6 +37,8 @@
     - rustc
     - python-dev
     - python3-dev
+    - libffi-dev
+
 
 - name: create mlocate db
   ansible.builtin.command:
