@@ -48,3 +48,10 @@
 - name: install python2-pip
   ansible.builtin.command:
     cmd: python /tmp/get-pip.py
+
+- name: install some batteris from pip2
+  ansible.builtin.command:
+    cmd: pip2 install {{ item }}
+  with_items: 
+    - mitmproxy
+    - cryptography
