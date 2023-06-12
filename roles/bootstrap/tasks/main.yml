@@ -1,5 +1,5 @@
 
-- name: Set a hostname
+- name: set a hostname
   ansible.builtin.hostname:
     name: pidoor
 
@@ -7,38 +7,39 @@
   ansible.builtin.command:
     cmd: systemctl set-default multi-user.target
 
-- name: Copy sshd_config
+- name: copy sshd_config
   ansible.builtin.copy:
     dest: "/etc/ssh/sshd_config"
     src: "sshd_config"
 
-- name: Copy welcome banner
+- name: copy welcome banner
   ansible.builtin.copy:
     dest: "/etc/welcome-banner"
     src: "welcome-banner"
 
-- name: Restart sshd
+- name: restart sshd
   ansible.builtin.systemd:
     name: sshd
     state: restarted
     enabled: true
 
-- name: Install kali meta pakages
+- name: install prerequisited packages
   ansible.builtin.apt:
     name: "{{ item }}"
     update_cache: yes
     allow_unauthenticated: yes
   with_items: 
-    - kali-tools-information-gathering
-    - kali-tools-vulnerability
-    - kali-tools-web
-    - kali-tools-database
-    - kali-tools-passwords
-    - kali-tools-wireless
-    - kali-tools-reverse-engineering
-    - kali-tools-exploitation
-    - kali-tools-social-engineering
-    - kali-tools-sniffing-spoofing
-    - kali-tools-post-exploitation
-    - kali-tools-forensics
-    - kali-tools-reporting
+    - curl
+    - mlocate
+    - build-essential 
+    - gcc 
+    - make
+    - rustc
+
+- name: create mlocate db
+  ansible.builtin.command:
+    cmd: updatedb
+
+- name: install python2-pip
+  ansible.builtin.command:
+    cmd: curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py; python2 get-pip.py

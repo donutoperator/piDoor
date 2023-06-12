@@ -2,7 +2,7 @@
 
 - name: download and unarchive 
   ansible.builtin.unarchive:
-    src: https://github.com/xtr4nge/FruityWifi/archive/refs/heads/master.zip
+    src: https://github.com/donutoperator/FruityWifi/archive/refs/heads/master.zip
     dest: /opt/
     remote_src: yes
 
