@@ -37,8 +37,19 @@
     - rustc
     - python-dev
     - python3-dev
+    - python-tk
     - python-setuptools
     - libffi-dev
+    - libssl-dev
+    - libxml-dev
+    - libtiff5-dev
+    - libjpeg8-dev
+    - zlib1g-dev 
+    - libfreetype6-dev
+    - liblcms2-dev
+    - libwebp-dev
+    - tcl8.6-dev 
+    - tk8.6-dev
 
 - name: create mlocate db
   ansible.builtin.command:
@@ -53,9 +64,16 @@
   ansible.builtin.command:
     cmd: python /tmp/get-pip.py
 
-- name: install some batteris from pip2
+- name: install some batteries from pip2
   ansible.builtin.command:
     cmd: pip2 install {{ item }}
+  with_items: 
+    - mitmproxy
+    - cryptography
+
+- name: install some batteries from pip3
+  ansible.builtin.command:
+    cmd: pip install {{ item }}
   with_items: 
     - mitmproxy
     - cryptography
