@@ -29,12 +29,12 @@
     update_cache: yes
     allow_unauthenticated: yes
   with_items: 
+    - git
     - curl
     - mlocate
     - build-essential 
     - gcc 
     - make
-    - rustc
     - python-dev
     - python3-dev
     - python3-pip
@@ -42,8 +42,6 @@
     - python-setuptools
     - libffi-dev
     - libssl-dev
-    - libssl1.0.2
-    - libssl1.0-dev
     - libxml2
     - libxml2-dev
     - libxslt1-dev
@@ -51,40 +49,13 @@
     - libjpeg-dev
     - zlib1g-dev 
     - libfreetype6-dev
-    - liblcms2-dev
     - libwebp-dev
-    - tcl8.6-dev 
-    - tk8.6-dev
     - musl-dev
 
 - name: create mlocate db
   ansible.builtin.command:
     cmd: updatedb
 
-- name: download python2-pip
-  ansible.builtin.get_url:
-    url: https://bootstrap.pypa.io/pip/2.7/get-pip.py # required. HTTP, HTTPS, or FTP URL in the form (http|https|ftp)://[user[:pass]]@host.domain[:port]/path
-    dest: /tmp/get-pip.py # required. Absolute path of where to download the file to. If C(dest) is a directory, either the server provided filename or, if none provided, the base name of the URL on the remote server will be used. If a directory, C(force) has no effect. If C(dest) is a directory, the file will always be downloaded (regardless of the C(force) option), but replaced only if the contents changed..
-
-- name: install python2-pip
-  ansible.builtin.command:
-    cmd: python /tmp/get-pip.py
-
 - name: upgrade pip3
   ansible.builtin.command:
     cmd: python3 -m pip install --upgrade pip
-
-- name: install some batteries from pip2
-  ansible.builtin.command:
-    cmd: pip2 install {{ item }}
-  with_items: 
-    - mitmproxy
-    - cryptography
-
-- name: install some batteries from pip3
-  ansible.builtin.command:
-    cmd: pip install {{ item }}
-  with_items: 
-    - mitmproxy
-    - cryptography
-  notify: Reboot host and wait for it to restart

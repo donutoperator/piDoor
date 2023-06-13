@@ -10,9 +10,8 @@ Restart=on-failure
 RestartSec=5
 StartLimitBurst=5
 StartLimitInterval=2min
-ExecStart=/usr/bin/python3 /opt/remoteTelegramShell-master/pyTelegramShellBot.py
 WorkingDirectory=/opt/remoteTelegramShell-master
-WantedBy=multi-user.target
+ExecStart=/usr/bin/python3 /opt/remoteTelegramShell-master/pyTelegramShellBot.py
 
 [Install]
 WantedBy=multi-user.target
